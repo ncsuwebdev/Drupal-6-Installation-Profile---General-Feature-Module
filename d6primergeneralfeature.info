@@ -1,0 +1,8 @@
+name = "D6 Primer General Feature"
+description = General feature to work with the d6primer install profile
+package = NC State University Custom Modules
+
+version="6.x-1.8"
+core = 6.x
+project = "d6primergeneralfeature"
+php = 5.3
