@@ -1,0 +1,28 @@
+<?php
+/**
+ * 
+ * Works with the D6Primer Installation Profile
+ * to enable/disable modules for the associated platform
+ * 
+ */
+
+
+// run when updating this module to version 6.x-1.8
+function d6primergeneralfeature_update_6180() {
+
+	// array of modules that should be disabled by default (that were enabled by default since last release)
+	// careful, as this will disable even the modules that have been manually enabled since deployment using the platform
+	$disableModules = array(
+  		'backup_migrate',
+  	);
+
+	module_disable($disableModules);	
+
+	// forcibly configure variables that have changed since last release of the install profile
+	// careful, as this will disable even the modules that have been manually enabled since deployment using the platform
+	
+	// Configures cache new settings
+	  variable_set('block_cache', '1');
+	  variable_set('cache', '1');
+
+}
