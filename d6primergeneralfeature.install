@@ -51,3 +51,28 @@ function d6primergeneralfeature_update_6109() {
   return array();
 
 }
+
+function d6primergeneralfeature_update_6110() { 
+
+  // check and change permissions on the cache directory for gcal_events
+  if (module_exists('gcal_events')) {
+	  $cacheParent = file_directory_path() . '/gcal_events';
+	  $cachePath = $cacheParent . '/cache';
+		
+		// module stores cache in files directory (since dev version)
+
+	  // create cache directory in files directory, make writable by server
+		if(!is_dir($cacheParent)) {
+	    mkdir($cacheParent, 0755, false);	
+	  }
+	  if(!is_dir($cachePath)) {
+	    mkdir($cachePath, 0755, false); 
+	  }
+
+	  // check file permissions, if not 0755 then set
+	  if(substr(sprintf('%o', fileperms($cachePath)), -4) != 0755) {
+	    chmod($cachePath, 0755);
+	  }
+	}
+
+}
